@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; 
+import React, { useState, useEffect } from 'react'; 
 import './Game.css';
 import Card from './Card/Card';
 import { getArrayOfRundomNumbers } from '../../../utils';
@@ -6,21 +6,37 @@ import { getArrayOfRundomNumbers } from '../../../utils';
 export default function Game(props) {
   const {
     gameSelectedNumbers,
-    winNumbersCombinations,
-    gamePlayedOnce,
     openModal,
-    loadNumbers,
     setSelectedNumber,
-    setGameStatus,
+    setWinPoints,
+    unsetWinPoints,
   } = props;
 
   const [data, handleData] = useState(null);
-  const invalidLength = gameSelectedNumbers.some(card => card.length > 5);
 
+  useEffect(() => {
+    if (data) {
+       setWinPoints(getPoints());
+    }
+  });
+
+function getPoints() {
+  let count = 0
+  gameSelectedNumbers.forEach((card, index) => {
+    card.forEach(numberInCard => {
+      if (data[index].includes(numberInCard)) {
+        count++
+      }
+    })
+  })
+  return count;
+}
+
+  const invalidLength = gameSelectedNumbers.some(card => card.length > 5);
   const fetchData = async () => {
     try {
       const resultArray = await getArrayOfRundomNumbers(1, 20);
-      handleData(resultArray)
+      handleData(resultArray);
     }
     catch (e) {
       throw e.message;
@@ -29,27 +45,31 @@ export default function Game(props) {
 
   return (
     <div className='game-wrapper'>
-      <form>
-        <div>
+      <form className='game-wrapper_form'>
+
           {gameSelectedNumbers.map((card, index) => (
             <Card
               setSelectedNumber={setSelectedNumber}
               cardInfo={card}
-              winNumbersCombinations={winNumbersCombinations}
               key={index}
               cardIndex={index}
               length={card.length}
+              winNumbers={data ? data[index] : []}
             />
           ))}
-        </div>
-        <button type='button' onClick={() => {
-          fetchData();
-          setGameStatus();
-        }} disabled={invalidLength}>
-          {gamePlayedOnce ? 'Play more' : 'submit'}
-        </button>
       </form>
-      <p>{invalidLength ? 'You must select only 5 positions in the card.' : null}</p>
+      <button type='button' onClick={() => {
+        if (!data) {
+          fetchData();
+          openModal();
+        } else {
+          handleData(null);
+          unsetWinPoints();
+        }
+      }} disabled={invalidLength} className="submit-button">
+        {data ? 'Play more' : 'submit'}
+      </button>
+      <p className="game-warning">{invalidLength ? 'You must select only 5 positions in the card.' : null}</p>
     </div>
   );
 }

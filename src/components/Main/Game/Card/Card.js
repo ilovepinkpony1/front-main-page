@@ -7,7 +7,8 @@ export default function Card(props) {
     setSelectedNumber, 
     cardIndex, 
     cardInfo,
-    length
+    length,
+    winNumbers
   } = props;
 
   return (
@@ -18,30 +19,35 @@ export default function Card(props) {
           setSelectedNumber={setSelectedNumber}
           counter={4}
           cardInfo={cardInfo}
+          winNumbers={winNumbers}
         />
         <CardItem
           cardIndex={cardIndex}
           setSelectedNumber={setSelectedNumber}
           counter={8}
           cardInfo={cardInfo}
+          winNumbers={winNumbers}
         />
         <CardItem
           cardIndex={cardIndex}
           setSelectedNumber={setSelectedNumber}
           counter={12}
           cardInfo={cardInfo}
+          winNumbers={winNumbers}
         />
         <CardItem
           cardIndex={cardIndex}
           setSelectedNumber={setSelectedNumber}
           counter={16}
           cardInfo={cardInfo}
+          winNumbers={winNumbers}
         />
         <CardItem
           cardIndex={cardIndex}
           setSelectedNumber={setSelectedNumber}
           counter={20}
           cardInfo={cardInfo}
+          winNumbers={winNumbers}
         />
       </tbody>
     </table>

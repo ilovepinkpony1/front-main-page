@@ -5,6 +5,7 @@ import { selectUnselectItem } from '../../../redux/actions';
 function mapStateToProps(state) {
   return {
     itemsStatus: state.menuSelectedItems,
+    openModalStatus: state.openModalStatus,
   }
 }
 

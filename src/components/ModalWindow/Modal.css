@@ -1,0 +1,23 @@
+.modal-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 7px;
+  border: 2 px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.modal-window  p {
+  text-decoration: underline;
+  margin: 20px 0;
+  cursor: pointer;
+  font-weight: bold;
+  color: rgb(182, 96, 96);
+}

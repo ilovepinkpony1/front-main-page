@@ -1,3 +1,25 @@
-.horizontal-menu_item-active {
-  background: red;
+.horizontal-menu_item {
+  padding: 150px 15px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+  transition: 0.5s all ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.horizontal-menu_item:hover {
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
+}
+
+.active {
+  transform: scaleX(1.1);
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #d4cabf 0%, #ceb9a7 100%);
+}
+
+.horizontal-menu_item-img {
+  height: 50px;
+  width: 50px;
 }

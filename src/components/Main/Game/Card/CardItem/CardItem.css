@@ -1,3 +1,8 @@
 .card-item_choosed {
-  background: red;
+  text-decoration: underline;
+  background: rgb(211, 151, 151);
+}
+
+.win-number {
+  background: rgb(112, 173, 112);
 }

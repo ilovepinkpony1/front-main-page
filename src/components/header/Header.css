@@ -1,0 +1,40 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header {
+  background: linear-gradient( #cfd9df 0%, #e2ebf0 100%);
+  position: sticky;
+  top: 0px;
+  z-index: 99999;
+  box-shadow: 0 0 15px 8px rgb(0, 0, 0, 0.3);
+  height: 70px;
+}
+
+.header-buttons {
+  display: flex;
+  flex-direction: row;
+  border-left: 2px solid rgb(0, 0, 0, 0.6);
+}
+
+.header-button {
+  width: 150px;
+  height: 70px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  background: rgb(0, 0, 0, 0.2);
+  font-size: 15px;
+  color: #fff;
+  font-weight: bold;
+  transition: 0.2s all ease;
+  text-transform: uppercase;
+}
+
+.header-button:hover {
+  background: rgb(0, 0, 0, 0.5);
+}
+

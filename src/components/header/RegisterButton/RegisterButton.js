@@ -3,8 +3,10 @@ import './RegisterButton.css';
 
 export default function RegisterButton() {
   return (
-    <button className="header-registration-button">
-      registration
+    <div className="header-registration-button_wrapper">
+      <button className="header-button">
+        registration
     </button>
+    </div>
   )
 }

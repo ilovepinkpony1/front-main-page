@@ -1,34 +1,37 @@
 import React from 'react';
 import './CardItem.css';
+import { getCardItemClassName } from '../../../../../utils';
 
 export default function CardItem(props) {
   const { 
     setSelectedNumber, 
     cardIndex, 
     counter,
-    cardInfo
+    cardInfo,
+    winNumbers,
   } = props;
+
   return (
     <tr>
       <td onClick={() => {
         setSelectedNumber(cardIndex, counter - 3)
         
-      }} className={cardInfo.includes(counter - 3) ? "card-item_choosed" : null}>
+      }} className={getCardItemClassName(cardInfo, winNumbers, (counter - 3))}>
       {counter - 3}
       </td>
       <td onClick={() => {
         setSelectedNumber(cardIndex, counter - 2)
-      }} className={cardInfo.includes(counter - 2) ? "card-item_choosed" : null}>
+      }} className={getCardItemClassName(cardInfo, winNumbers, (counter - 2))}>
       {counter - 2}
       </td>
       <td onClick={() => {
         setSelectedNumber(cardIndex, counter - 1)
-      }} className={cardInfo.includes(counter - 1) ? "card-item_choosed" : null}>
+      }} className={getCardItemClassName(cardInfo, winNumbers, (counter - 1))}>
       {counter - 1}
       </td>
       <td onClick={() => {
         setSelectedNumber(cardIndex, counter)
-      }} className={cardInfo.includes(counter) ? "card-item_choosed" : null}>
+      }} className={getCardItemClassName(cardInfo, winNumbers, (counter))}>
       {counter}
       </td>
     </tr>

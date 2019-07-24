@@ -3,8 +3,10 @@ import './TrashButton.css';
 
 export default function TrashButton() {
   return (
-    <button className="header-trash-button">
-      delete
+    <div className="header-trash-button_wrapper">
+      <button className="header-button">
+        delete
     </button>
+    </div>
   )
 }

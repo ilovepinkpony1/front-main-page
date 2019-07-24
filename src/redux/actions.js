@@ -1,9 +1,9 @@
 export const SELECT_UNSELECT_ITEM = 'select_unselect_item';
 export const SET_SELECTED_NUMBER = 'set_selected_number';
-export const LOAD_NUMBERS = 'load_numbers';
-export const SET_GAME_STATUS = 'set_game_status';
 export const OPEN_MODAL = 'open_modal';
 export const CLOSE_MODAL = 'close_modal';
+export const SET_WIN_POINTS = 'set_win_points';
+export const SET_TO_ZERO_WIN_POINTS = 'set_to_zero_win_points';
 
 export function selectUnselectItem(index) {
   return {
@@ -24,18 +24,6 @@ export function setSelectedNumber(index, number) {
   }
 }
 
-export function loadNumbers() {
-  return {
-    type: LOAD_NUMBERS,
-  }
-}
-
-export function setGameStatus() {
-  return {
-    type: SET_GAME_STATUS,
-  }
-}
-
 export function openModal() {
   return {
     type: OPEN_MODAL,
@@ -45,5 +33,20 @@ export function openModal() {
 export function closeModal() {
   return {
     type: CLOSE_MODAL,
+  }
+}
+
+export function setWinPoints(count) {
+  return {
+    type: SET_WIN_POINTS,
+    payload: {
+      count
+    }
+  }
+}
+
+export function unsetWinPoints() {
+  return {
+    type: SET_TO_ZERO_WIN_POINTS,
   }
 }

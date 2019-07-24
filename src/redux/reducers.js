@@ -1,10 +1,10 @@
 import {
   SELECT_UNSELECT_ITEM,
   SET_SELECTED_NUMBER,
-  LOAD_NUMBERS,
-  SET_GAME_STATUS,
   OPEN_MODAL,
-  CLOSE_MODAL
+  CLOSE_MODAL,
+  SET_WIN_POINTS,
+  SET_TO_ZERO_WIN_POINTS
 } from './actions';
 
 const initialState = {
@@ -12,7 +12,8 @@ const initialState = {
   gameSelectedNumbers: [[], [], [], [], []],
   winNumbersCombinations: null,
   gamePlayedOnce: false,
-  openModal: false
+  openModalStatus: false,
+  winPoints: 0
 };
 
 const actionsHandler = {
@@ -38,11 +39,11 @@ const actionsHandler = {
         ...state,
         gameSelectedNumbers: state.gameSelectedNumbers.map((card, index) => {
           if (index === action.payload.index) {
-            card.splice(card.indexOf(action.payload.number), 1)
+            card.splice(card.indexOf(action.payload.number), 1);
           }
           return card;
         })
-      }
+      };
     }
 
     return {
@@ -56,24 +57,31 @@ const actionsHandler = {
     };
   },
 
-  [SET_GAME_STATUS]: state => {
-    return {
-      ...state,
-      gamePlayedOnce: true
-    };
-  },
-
   [OPEN_MODAL]: state => {
     return {
       ...state,
-      openModal: true
+      openModalStatus: true
     };
   },
 
   [CLOSE_MODAL]: state => {
     return {
       ...state,
-      openModal: false
+      openModalStatus: false
+    };
+  },
+
+  [SET_WIN_POINTS]: (state, action) => {
+    return {
+      ...state,
+      winPoints: action.payload.count
+    };
+  },
+
+  [SET_TO_ZERO_WIN_POINTS]: state => {
+    return {
+      ...state,
+      winPoints: 0
     };
   }
 };
